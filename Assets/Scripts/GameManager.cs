@@ -13,6 +13,8 @@ public class GameManager : MonoBehaviour
     
     public Vector3 playerPos;
     private Vector3 startingPos;
+
+    public float timer;
     // Start is called before the first frame update
 
     private void Awake()
@@ -28,7 +30,7 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        timer += Time.deltaTime;
     }
 
     public void Checkpoint()
@@ -50,6 +52,8 @@ public class GameManager : MonoBehaviour
             player.position = startingPos;
             lives = 5;
             playerUI.SetLives();
+            timer = 0f;
+
         }
     }
 

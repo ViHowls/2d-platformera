@@ -15,31 +15,35 @@ public class PlayerUI : MonoBehaviour
     private int uiCoins;
     
 
-    private float timer;
+    private float uiTimer;
 
     private void Start()
     {
-        uiLives = GameManager.Instance.lives;
-        uiCoins = GameManager.Instance.coins;
+        
+        
         SetLives();
         SetCoins();
     }
 
     private void Update()
     {
-        timer += Time.deltaTime;
-        int minutes = Mathf.FloorToInt(timer / 60);
-        int seconds = Mathf.FloorToInt(timer % 60);
+        uiTimer = GameManager.Instance.timer;
+        int minutes = Mathf.FloorToInt(uiTimer / 60);
+        int seconds = Mathf.FloorToInt(uiTimer % 60);
         timeText.text = ("Time: " + string.Format(TIMER_FORMAT, minutes, seconds));
     }
 
     public void SetLives()
     {
+        uiLives = GameManager.Instance.lives;
         livesText.text = ("Lives: " + uiLives);
+        
     }
 
     public void SetCoins()
     {
+        uiCoins = GameManager.Instance.coins;
         coinsText.text = ("Coins: " + uiCoins);
+        
     }
 }
